@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Как начать играть на RageX</title>
+<style>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #1e1e2f, #3a3a60);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 50px;
+    color: #fff;
+}
+
+.play-container {
+    background: rgba(30, 30, 50, 0.95);
+    width: 650px;
+    max-width: 90%;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.play-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 32px;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px #000;
+}
+
+.play-container p, .play-container ol {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.play-container ol {
+    padding-left: 20px;
+}
+
+.play-container ol li {
+    margin-bottom: 18px;
+}
+
+/* Кнопка назад */
+.button-back {
+    display: block;
+    width: 200px;
+    margin: 30px auto 0;
+    padding: 12px;
+    background: linear-gradient(45deg, #4a6cff, #00d4ff);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+}
+
+.button-back:hover {
+    background: linear-gradient(45deg, #3b55cc, #00b4d0);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* Адаптивность */
+@media (max-width: 500px) {
+    .play-container { width: 95%; padding: 30px; }
+    .play-container h1 { font-size: 28px; }
+    .play-container p, .play-container ol { font-size: 14px; }
+    .button-back { width: 90%; font-size: 14px; padding: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="play-container">
+    <h1>Как начать играть на RageX</h1>
+
+    <p>Следуйте пошаговой инструкции, чтобы быстро подключиться к серверу и начать игру</p>
+
+    <ol>
+        <li><strong>Скачайте Minecraft 1.21</strong> ( или другую версию, указанную для сервера )</li>
+        <li><strong>Установите лаунчер</strong> ( официальный или поддерживаемый лаунчер )</li>
+        <li><strong>Добавьте сервер RageX</strong> в список серверов:
+            <ul>
+                <li>IP сервера: <span style="color:#818078;">play.ragex.ru</span></li>
+                <li>Порт: 25565</li>
+            </ul>
+        </li>
+        <li><strong>Создайте аккаунт</strong> на сервере или войдите под существующим</li>
+        <li><strong>Прочтите правила сервера</strong> на странице правил, чтобы избежать блокировок</li>
+        <li><strong>Выберите режим игры</strong> в Hub ( например: Анархия )</li>
+        <li><strong>Начните играть</strong>! Исследуйте мир, добывайте ресурсы и взаимодействуйте с другими игроками</li>
+        <li><strong>Подключайтесь к сообществу</strong>: Discord, сайт и группы ВКонтакте для новостей и событий</li>
+    </ol>
+
+    <p>Совет: зайдя на сервер в первый раз, советую изучить основные и уникальные механики</p>
+
+    <a href="index.html" class="button-back">Назад на главную</a>
+</div>
+
+</body>
+</html>

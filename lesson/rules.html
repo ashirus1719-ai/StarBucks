@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Правила сервера RageX</title>
+<style>
+html {
+    scroll-padding: 100px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #3a3a60, #3a3a60);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    color: #fff;
+}
+
+.rule_box {
+    background: rgba(30, 30, 50, 0.95);
+    width: 650px;
+    max-width: 90%;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.rule_box .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #4a6cff, #00d4ff);
+}
+
+.rule_box .head p.title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.rule_box .head .box_status {
+    display: none;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.rule_box .head .box_status.active {
+    display: inline-block;
+}
+
+.rule_box .rule_content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    color: #ddd;
+    line-height: 1.6;
+    font-size: 14px;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.rule_box .rule_content.show {
+    max-height: 1000px; /* Достаточно для всех пунктов */
+    padding: 15px 20px;
+}
+
+.rule_box .rule_content span {
+    font-weight: bold;
+    color: #00d4ff;
+}
+
+.rule_box .rule_content a {
+    color: #42AAFF;
+    text-decoration: none;
+}
+
+.rule_box .rule_content a:hover {
+    text-decoration: underline;
+}
+
+.button-back {
+    display: inline-block;
+    width: 220px;
+    margin: 40px auto;
+    padding: 14px;
+    background: linear-gradient(45deg, #4a6cff, #00d4ff);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.button-back:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 500px) {
+    .rule_box {
+        width: 95%;
+    }
+    .rule_box .head p.title {
+        font-size: 16px;
+    }
+    .rule_box .rule_content {
+        font-size: 13px;
+    }
+    .button-back {
+        width: 90%;
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. Основные правила -->
+<div class="rule_box">
+    <div class="head">
+        <p class="title">1. Основные правила:</p>
+        <p class="box_status active">Развернуть <img src="/assets/img/down.png" alt=""></p>
+        <p class="box_status">Свернуть <img src="/assets/img/up.png" alt=""></p>
+    </div>
+    <div class="rule_content">
+        <span>1.1</span> Будь вежлив с другими игроками;<br>
+        <span>1.2</span> Не провоцируй конфликты без причины;<br>
+        <span>1.3</span> Не используй оскорбления или угрозы;<br>
+        <span>1.4</span> Запрещены читы и баг-эксплойти;<br>
+        <span>1.5</span> Любое стороннее ПО запрещено;<br>
+        <span>1.6</span> Эксплуатация багов карается;<br>
+        <span>1.7</span> Следуй указаниям администрации;<br>
+        <span>1.8</span> Не размещай запрещённый контент;<br>
+        <span>1.9</span> Уважай других пользователей;<br>
+    </div>
+</div>
+
+<!-- 2. Правила чата -->
+<div class="rule_box">
+    <div class="head">
+        <p class="title">2. Правила чата:</p>
+        <p class="box_status active">Развернуть <img src="/assets/img/down.png" alt=""></p>
+        <p class="box_status">Свернуть <img src="/assets/img/up.png" alt=""></p>
+    </div>
+    <div class="rule_content">
+        <span>2.1</span> Запрещен Капс/Спам/Флуд в любом из чатов;<br>
+        <span>2.2</span> Запрещены унижения, оскорбления игроков;<br>
+        <span>2.3</span> Запрещена нецензурная лексика;<br>
+        <span>2.4</span> Запрещено рекламировать сторонние ресурсы;<br>
+        <span>2.5</span> Чатами для рекламы/покупки/продажи разрешено пользоваться только в тематичных целях;<br>
+    </div>
+</div>
+
+<!-- 3. Аккаунт -->
+<div class="rule_box">
+    <div class="head">
+        <p class="title">3. Аккаунт:</p>
+        <p class="box_status active">Развернуть <img src="/assets/img/down.png" alt=""></p>
+        <p class="box_status">Свернуть <img src="/assets/img/up.png" alt=""></p>
+    </div>
+    <div class="rule_content">
+        <span>3.1</span> Ник не должен содержать:<br>
+        <span>3.1.1</span> Мата, скрытого мата, унижений, оскорблений;<br>
+        <span>3.1.2</span> Схожесть с названием других проектов/чит клиентов;<br>
+        <span>3.1.3</span> Схожесть с Администраторами, Ютуберами проекта;<br>
+        <span>3.2</span> Запрещается предоставлять свой аккаунт другим людям;<br>
+        <span>3.3</span> Ответственность несет владелец аккаунта;<br>
+    </div>
+</div>
+
+<!-- 4. Игровые правила -->
+<div class="rule_box">
+    <div class="head">
+        <p class="title">4. Игровые правила:</p>
+        <p class="box_status active">Развернуть <img src="/assets/img/down.png" alt=""></p>
+        <p class="box_status">Свернуть <img src="/assets/img/up.png" alt=""></p>
+    </div>
+    <div class="rule_content">
+        <span>4.1</span> Запрещено мошенничество, обман администрации;<br>
+        <span>4.2</span> Запрещено продавать/покупать игровые ценности за реальную валюту;<br>
+        <span>4.3</span> Запрещено пользоваться сторонними программами, читами, кликерами;<br>
+        <span>4.4</span> Запрещено помогать нарушителям;<br>
+    </div>
+</div>
+
+<!-- Кнопка назад на главную -->
+<div style="text-align: center; margin: 40px 0;">
+    <a href="index.html" class="button-back">Назад на главную</a>
+</div>
+
+<script>
+const boxes = document.querySelectorAll('.rule_box');
+boxes.forEach(box => {
+    const head = box.querySelector('.head');
+    const content = box.querySelector('.rule_content');
+    
+    head.addEventListener('click', () => {
+        content.classList.toggle('show');
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RageX Anarchy</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- игровой курсор -->
+<div class="cursor"></div>
+
+<header>
+  <h2 class="logo">RageX</h2>
+  <nav class="navigation">
+    <a href="rules.html">Правила</a>
+    <a href="#">Акции</a>
+    <a href="https://discord.gg/GYRTqbMPsH">Дискорд</a>
+    <a href="play.html">Играть</a>
+    <a href="login.html">
+      <button class="btn">Логин</button>
+    </a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 id="animated-text">RageX</h1>
+  <p>Революция анархии. Почувствуй полный вайб</p>
+  <a href="play.html">
+  <button class="play">Начать играть</button>
+  </a>
+  <div class="ip" onclick="copyIP()">
+    IP: <span id="server-ip">play.ragex.ru</span>
+  </div>
+</section>
+
+<!-- онлайн-счётчик -->
+<div class="online-count">Онлайн: <span id="online-num">177</span></div>
+
+<!-- Canvas для частиц -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Модальные окна -->
+<div id="rules" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('rules')">&times;</span>
+    <h2>Правила сервера</h2>
+    <p>Здесь можно написать правила сервера...</p>
+  </div>
+</div>
+
+<div id="events" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('events')">&times;</span>
+    <h2>Акции</h2>
+    <p>Здесь можно описать текущие акции и события...</p>
+  </div>
+</div>
+
+<script>
+// ----------------------------
+// Копирование IP с уведомлением
+// ----------------------------
+function copyIP(){
+    const ip = document.getElementById("server-ip").innerText;
+    navigator.clipboard.writeText(ip);
+
+    const tip = document.createElement('div');
+    tip.className = 'copy-tip';
+    tip.innerText = 'IP скопирован';
+    document.body.appendChild(tip);
+    setTimeout(()=> tip.remove(), 1500);
+}
+
+// ----------------------------
+// Модальные окна
+// ----------------------------
+function openModal(id){
+    const modal = document.getElementById(id);
+    modal.style.display = 'flex';
+    modal.classList.add('show');
+}
+function closeModal(id){
+    const modal = document.getElementById(id);
+    modal.classList.remove('show');
+    setTimeout(()=> modal.style.display='none', 300);
+}
+window.onclick = function(e){
+    if(e.target.classList.contains('modal')){
+        e.target.classList.remove('show');
+        setTimeout(()=> e.target.style.display='none', 300);
+    }
+}
+
+// ----------------------------
+// Плавный игровой курсор
+// ----------------------------
+const cursor = document.querySelector(".cursor");
+let mouseX = 0, mouseY = 0;
+let posX = 0, posY = 0;
+document.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
+function animateCursor(){
+    posX += (mouseX - posX) * 0.25;
+    posY += (mouseY - posY) * 0.25;
+    cursor.style.transform = `translate(${posX-9}px, ${posY-9}px)`;
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// ----------------------------
+// Canvas частицы + Parallax
+// ----------------------------
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let w, h;
+function resizeCanvas(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+const particles = [];
+const particleCount = 80;
+for(let i=0;i<particleCount;i++){
+    particles.push({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*3+1,
+        dx: (Math.random()-1)*1,
+        dy: (Math.random()-1)*1,
+        alpha: Math.random()*1+0.5
+    });
+}
+function animateParticles(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
+        p.x += p.dx; p.y += p.dy;
+        if(p.x<0||p.x>w) p.dx*=-1;
+        if(p.y<0||p.y>h) p.dy*=-1;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(110,168,255,${p.alpha})`;
+        ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ----------------------------
+// Анимация текста по буквам
+// ----------------------------
+const text = document.getElementById("animated-text");
+const str = text.innerText;
+text.innerText = "";
+for(let i=0;i<str.length;i++){
+    let span = document.createElement("span");
+    span.innerText = str[i];
+    span.style.opacity = 0;
+    span.style.transition = `opacity 0.5s ${i*0.05}s`;
+    text.appendChild(span);
+}
+window.addEventListener("load", ()=>{
+    text.querySelectorAll("span").forEach(s=> s.style.opacity = 1);
+});
+
+// ----------------------------
+// Параллакс фона ( subtle camera movement )
+// ----------------------------
+document.addEventListener("mousemove", e=>{
+    const x = (e.clientX / window.innerWidth) * 10;
+    const y = (e.clientY / window.innerHeight) * 10;
+    document.body.style.backgroundPosition = `${50+x}% ${50+y}%`;
+});
+</script>
+
+</body>
+</html>

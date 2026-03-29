@@ -1,0 +1,346 @@
+/* ------------------------------ */
+/*       БАЗОВЫЕ СТИЛИ           */
+/* ------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    cursor: none;
+}
+
+body {
+    min-height: 100vh;
+    background: url(fon.png) no-repeat center center;
+    background-size: cover;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* затемнение фона */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+}
+
+/* ------------------------------ */
+/*       ИГРОВОЙ КУРСОР          */
+/* ------------------------------ */
+.cursor {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    background: #6ea8ff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow:
+        0 0 10px #6ea8ff,
+        0 0 20px #6ea8ff,
+        0 0 40px #6ea8ff,
+        0 0 80px #42aaff;
+}
+
+/* ------------------------------ */
+/*            NAVBAR              */
+/* ------------------------------ */
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(20, 20, 30, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+/* логотип с анимацией */
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    text-shadow:
+        0 0 5px #6ea8ff,
+        0 0 10px #6ea8ff,
+        0 0 20px #6ea8ff,
+        0 0 40px #6ea8ff;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow:
+            0 0 5px #6ea8ff,
+            0 0 10px #6ea8ff,
+            0 0 20px #6ea8ff,
+            0 0 40px #6ea8ff;
+    }
+    to {
+        text-shadow:
+            0 0 10px #42aaff,
+            0 0 20px #42aaff,
+            0 0 40px #42aaff,
+            0 0 80px #42aaff;
+    }
+}
+
+/* навигация */
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation a {
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 35px;
+    color: white;
+    transition: 0.3s;
+}
+
+.navigation a:hover {
+    color: #6ea8ff;
+    text-shadow:
+        0 0 5px #6ea8ff,
+        0 0 10px #6ea8ff,
+        0 0 20px #6ea8ff;
+}
+
+.navigation .btn {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 42px;
+    margin-left: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.navigation .btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px #42aaff, 0 0 30px #42aaff;
+}
+
+.navigation .btn::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: 100px; height: 100px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(255,255,255,0.3);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.navigation .btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* ------------------------------ */
+/*             HERO               */
+/* ------------------------------ */
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: fade 1.5s ease;
+}
+
+.hero h1 {
+    font-size: 70px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    margin-top: 15px;
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+/* кнопка "Начать играть" */
+.play {
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    padding: 16px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4f8cff, #6ea8ff);
+    color: white;
+    cursor: pointer;
+    box-shadow:
+        0 0 15px rgba(79, 140, 255, 0.6),
+        0 0 30px rgba(79, 140, 255, 0.4);
+    transition: 0.3s;
+}
+
+.play:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 25px rgba(79, 140, 255, 0.8),
+        0 0 50px rgba(79, 140, 255, 0.6);
+}
+
+.play::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: 120px; height: 120px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(255,255,255,0.3);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.play:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* IP */
+.ip {
+    margin-top: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.ip:hover {
+    color: #6ea8ff;
+}
+
+.ip span {
+    color: #6ea8ff;
+    font-weight: 600;
+}
+
+/* ------------------------------ */
+/*           КАНВАС ЧАСТИЦ       */
+/* ------------------------------ */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ------------------------------ */
+/*           ОНЛАЙН СЧЁТЧИК      */
+/* ------------------------------ */
+.online-count {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 25px;
+    border-radius: 10px;
+    color: #42aaff;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(66, 170, 255, 0.6);
+    z-index: 100;
+}
+
+/* ------------------------------ */
+/*      ВСПЛЫВАЮЩАЯ ПОДСКАЗКА    */
+/* ------------------------------ */
+.copy-tip {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(79, 140, 255, 0.9);
+    padding: 10px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(79, 140, 255, 0.6);
+    z-index: 9999;
+    animation: fadeTip 1.5s ease forwards;
+}
+
+@keyframes fadeTip {
+    0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ------------------------------ */
+/*            АНИМАЦИИ            */
+/* ------------------------------ */
+@keyframes fade {
+    from { opacity: 0; transform: translate(-50%, -40%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* ------------------------------ */
+/*            МОДАЛКИ             */
+/* ------------------------------ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background: rgba(20,20,30,0.95);
+    padding: 20px 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+.modal .close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #fff;
+}
