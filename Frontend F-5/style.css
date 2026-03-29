@@ -195,3 +195,12 @@ section img {
     font-size: 80px;
     font-weight: 800;
 }
+.cont2{
+    display: flex;
+    align-items: center;
+    gap: 170px;
+    margin-left: 170px;
+}
+.cont2 p {
+    font-size: 27px;
+}
